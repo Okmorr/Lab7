@@ -1,0 +1,51 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:Lab7.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="600"
+		MinWidth="850" MinHeight="600"
+		Width="850" Height="600"
+		MaxWidth="850" MaxHeight="600"
+        x:Class="Lab7.Views.MainWindow"
+        Icon="/Assets/avalonia-logo.ico"
+        Title="Lab7">
+
+    <Design.DataContext>
+        <vm:MainWindowViewModel/>
+    </Design.DataContext>
+  <Grid ColumnDefinitions="*" RowDefinitions="25, *, 50, 50">
+    <DockPanel Grid.Column="0" Grid.Row="0">
+    <Menu DockPanel.Dock="Top" VerticalAlignment="Top">
+      <MenuItem Header="File">
+        <MenuItem Name="Open" Header="Open..."/>
+        <MenuItem Name="Save" Header="Save..."/>
+        <MenuItem Header="Exit"/>
+      </MenuItem>
+		<MenuItem Header="_About" Name="AboutBtn"/>
+    </Menu>
+  </DockPanel>
+    
+    <DataGrid Grid.Column="0" Grid.Row="1" Name="MyDataGrid" Items="{Binding Items}" AutoGenerateColumns="False">
+      <DataGrid.Columns>
+        <DataGridTextColumn Width="*" Header="Name" Binding="{Binding visualName}"/>
+        <DataGridTextColumn Width="*" Header="Math" Binding="{Binding visualMath}"/>
+        <DataGridTextColumn Width="*" Header="Visual Programing" Binding="{Binding visualPrograming}"/>
+        <DataGridTextColumn Width="*" Header="OOP" Binding="{Binding visualOOP}"/>
+        <DataGridTextColumn Width="*" Header="PhysicalCulture" Binding="{Binding visualPhysicalCulture}"/>
+        <DataGridTextColumn Width="*" Header="Mark " Binding="{Binding visualMiddleMark}"/>
+        <DataGridCheckBoxColumn Width="20"></DataGridCheckBoxColumn>
+      </DataGrid.Columns>
+    </DataGrid>
+    <Grid ShowGridLines="False"  ColumnDefinitions="*, *, *, *, *, *, 20" RowDefinitions="*" Grid.Column="0" Grid.Row="2">
+      <TextBox Grid.Column="0" Text="Ср. по предмету"/>
+      <TextBox Grid.Column="1" Text="{Binding MiddleMath}"/>
+      <TextBox Grid.Column="2" Text="{Binding MiddleVisualPrograming}"/>
+      <TextBox Grid.Column="3" Text="{Binding MiddleOOP}"/>
+      <TextBox Grid.Column="4" Text="{Binding MiddlePhysicalCulture}"/>
+      <TextBox Grid.Column="5" Text="{Binding MiddleMiddleMark}"/>
+    </Grid>
+  </Grid>
+  
+  
+</Window>
